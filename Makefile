@@ -58,7 +58,7 @@ build:
 	cp ./target/$(artifact_name)-$(version).jar ./$(artifact_name).jar
 
 .PHONY: test
-test: test-unit
+test: test-unit test-integration
 
 .PHONY: test-unit
 test-unit: clean
@@ -66,7 +66,7 @@ test-unit: clean
 
 .PHONY: test-integration
 test-integration: clean
-	mvn integration-test -Dskip.unit.tests=true
+	mvn integration-test
 
 .PHONY: package
 package:

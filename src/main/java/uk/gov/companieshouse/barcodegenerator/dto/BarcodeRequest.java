@@ -6,10 +6,10 @@ import jakarta.validation.constraints.NotNull;
 public class BarcodeRequest {
 
     @NotNull(message = "DateReceived cannot be null")
-    @JsonProperty("datereceived")
+    @JsonProperty("dateReceived")
     private Integer dateReceived;
 
-    @JsonProperty("efsbarcode")
+    @JsonProperty("efsBarcode")
     private boolean efsBarcode;
 
     public @NotNull(message = "DateReceived cannot be null") Integer getDateReceived() {

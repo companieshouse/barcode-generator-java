@@ -21,8 +21,8 @@ class BarcodeRequestSerializationTest {
 
         String expectedJson = """
                 {
-                    "datereceived" : 20250101,
-                    "efsbarcode": true
+                    "dateReceived" : 20250101,
+                    "efsBarcode": true
                 }
                 """;
 
@@ -37,8 +37,8 @@ class BarcodeRequestSerializationTest {
     void testDeserialization() throws Exception {
         String json = """
                 {
-                    "datereceived" : 20250101,
-                    "efsbarcode": true
+                    "dateReceived" : 20250101,
+                    "efsBarcode": true
                 }
                 """;
 
