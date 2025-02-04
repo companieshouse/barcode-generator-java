@@ -31,7 +31,7 @@ class BarcodeControllerIT {
 
     @Test
     void testGenerateBarcode_Success() throws Exception {
-        BarcodeRequest request = getBarcodeRequest();
+        BarcodeRequest request = new BarcodeRequest(20250101, true);
         BarcodeResponse response = new BarcodeResponse("GeneratedBarcode123");
 
         when(barcodeService.generateBarcode(any(BarcodeRequest.class))).thenReturn(response);
@@ -62,7 +62,7 @@ class BarcodeControllerIT {
 
     @Test
     void testGenerateBarcode_ShouldReturnInternalServerError_WhenBarcodeServiceThrows() throws Exception {
-        BarcodeRequest request = getBarcodeRequest();
+        BarcodeRequest request = new BarcodeRequest(20250101, true);
 
         when(barcodeService.generateBarcode(any(BarcodeRequest.class))).thenThrow(new RuntimeException("Something went wrong"));
 
@@ -72,15 +72,5 @@ class BarcodeControllerIT {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(requestJson))
                 .andExpect(status().isInternalServerError());
-    }
-
-
-
-
-    private static BarcodeRequest getBarcodeRequest() {
-        BarcodeRequest request = new BarcodeRequest();
-        request.setDateReceived(20250101);
-        request.setEfsBarcode(true);
-        return request;
     }
 }

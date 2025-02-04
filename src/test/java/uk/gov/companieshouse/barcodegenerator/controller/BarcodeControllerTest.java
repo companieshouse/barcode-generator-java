@@ -25,9 +25,7 @@ class BarcodeControllerTest {
 
     @Test
     void generateBarcode_ShouldCallServiceWithCorrectRequest_AndReturnExpectedResponse() {
-        BarcodeRequest request = new BarcodeRequest();
-        request.setDateReceived(20250101);
-        request.setEfsBarcode(true);
+        BarcodeRequest request = new BarcodeRequest(20250101, true);
 
         BarcodeResponse expectedResponse = new BarcodeResponse("BARCODE12345");
         when(barcodeService.generateBarcode(request)).thenReturn(expectedResponse);
@@ -40,7 +38,7 @@ class BarcodeControllerTest {
 
     @Test
     void generateBarcode_ShouldThrowIllegalArgumentException_WhenServiceThrowsException() {
-        BarcodeRequest invalidRequest = new BarcodeRequest();
+        BarcodeRequest invalidRequest = new BarcodeRequest(null, false);
         when(barcodeService.generateBarcode(invalidRequest)).thenThrow(
                 new IllegalArgumentException("Invalid Request"));
 

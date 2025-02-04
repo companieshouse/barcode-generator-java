@@ -12,6 +12,11 @@ public class BarcodeRequest {
     @JsonProperty("efsBarcode")
     private boolean efsBarcode;
 
+    public BarcodeRequest(Integer dateReceived, boolean efsBarcode) {
+        this.dateReceived = dateReceived;
+        this.efsBarcode = efsBarcode;
+    }
+
     public @NotNull(message = "DateReceived cannot be null") Integer getDateReceived() {
         return dateReceived;
     }
